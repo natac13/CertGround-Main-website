@@ -1,0 +1,68 @@
+{
+  "name": "certground-frontend",
+  "private": true,
+  "description": "CertGround™️ Training Center Management SaaS FrontEnd built with gatsby.",
+  "version": "0.1.0",
+  "author": "Sean Paul Campbell <sean.campbell13@gmail.com",
+  "dependencies": {
+    "@emotion/core": "10.0.27",
+    "@material-ui/core": "4.8.3",
+    "@mdx-js/mdx": "1.5.5",
+    "@mdx-js/react": "1.5.5",
+    "gatsby": "^2.18.12",
+    "gatsby-image": "^2.2.34",
+    "gatsby-plugin-emotion": "4.1.21",
+    "gatsby-plugin-manifest": "^2.2.31",
+    "gatsby-plugin-material-ui": "2.1.6",
+    "gatsby-plugin-mdx": "1.0.67",
+    "gatsby-plugin-offline": "^3.0.27",
+    "gatsby-plugin-ramda": "1.0.0",
+    "gatsby-plugin-react-helmet": "^3.1.16",
+    "gatsby-plugin-sharp": "2.3.13",
+    "gatsby-remark-images": "3.1.42",
+    "gatsby-source-filesystem": "^2.1.40",
+    "gatsby-transformer-sharp": "^2.3.7",
+    "gatsby-transformer-yaml": "2.2.23",
+    "mdi-material-ui": "6.11.0",
+    "prop-types": "^15.7.2",
+    "ramda": "0.26.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-helmet": "^5.2.1",
+    "react-icons": "3.8.0"
+  },
+  "devDependencies": {
+    "eslint": "6.8.0",
+    "eslint-config-prettier": "6.9.0",
+    "eslint-config-standard": "14.1.0",
+    "eslint-loader": "3.0.3",
+    "eslint-plugin-import": "2.20.0",
+    "eslint-plugin-jsx-a11y": "6.2.3",
+    "eslint-plugin-node": "11.0.0",
+    "eslint-plugin-prettier": "3.1.2",
+    "eslint-plugin-promise": "4.2.1",
+    "eslint-plugin-react": "7.18.0",
+    "eslint-plugin-standard": "4.0.1",
+    "gatsby-plugin-eslint": "2.0.8",
+    "prettier": "^1.19.1"
+  },
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/natac13/CertGround-FrontEnd"
+  },
+  "bugs": {
+    "url": "https://github.com/natac13/CertGround-FrontEnd/issues"
+  }
+}
