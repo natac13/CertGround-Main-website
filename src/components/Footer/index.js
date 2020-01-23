@@ -46,7 +46,6 @@ const Footer = (props) => {
           description
           title
           authorLinkedIn
-          docsLink
         }
       }
       clientsYaml(name: { eq: "DEMO" }) {
@@ -99,7 +98,7 @@ const Footer = (props) => {
             <ListItemText>Home Page</ListItemText>
           </ListItem>
 
-          <Tooltip
+          {/* <Tooltip
             disableHoverListener={isLoggedIn}
             disableTouchListener={isLoggedIn}
             disableFocusListener={isLoggedIn}
@@ -119,7 +118,7 @@ const Footer = (props) => {
               </ListItemIcon>
               <ListItemText>Feedback</ListItemText>
             </ListItem>
-          </Tooltip>
+          </Tooltip> */}
           <ListItem
             component={Link}
             to="/eula"
@@ -145,8 +144,9 @@ const Footer = (props) => {
           </ListItem>
 
           <ListItem
-            component={MuiLink}
-            href={data.site.siteMetadata.docsLink}
+            component={Link}
+            // href={data.site.siteMetadata.docsLink}
+            to="/docs"
             key="docs"
           >
             <ListItemIcon>
