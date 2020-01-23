@@ -1,6 +1,7 @@
 const path = require(`path`)
 require(`dotenv`).config({
-  path: `.env.${process.env.NODE_ENV}`,
+  path: `.env`,
+  // path: `.env.${process.env.NODE_ENV}`,
 })
 module.exports = {
   siteMetadata: {
@@ -17,12 +18,35 @@ module.exports = {
     'Mdx.frontmatter.author': `Sean Paul Campbell`,
   },
   plugins: [
+    // {
+    //   resolve: 'gatsby-theme-docz',
+    //   options: {
+    //     gatsbyRemarkPlugins: [
+    //       {
+    //         resolve: `gatsby-remark-images`,
+    //         options: {
+    //           maxWidth: 786,
+    //           backgroundColor: `#ffffff`,
+    //         },
+    //       },
+    //       {
+    //         resolve: `gatsby-remark-responsive-iframe`,
+    //         options: {
+    //           wrapperStyle: `margin-bottom: 1.5rem`,
+    //         },
+    //       },
+
+    //       `gatsby-remark-autolink-headers`,
+    //       `gatsby-remark-copy-linked-files`,
+    //     ],
+    //   },
+    // },
     `gatsby-transformer-yaml`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `commonData`,
-        path: `./common/`,
+        path: `${__dirname}/common/`,
       },
     },
     {
@@ -44,6 +68,13 @@ module.exports = {
         path: `${__dirname}/src/pages/`,
       },
     },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `legal`,
+    //     path: `${__dirname}/src/legal/`,
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
@@ -56,8 +87,6 @@ module.exports = {
         //   )
         // },
         gatsbyRemarkPlugins: [
-          //   `gatsby-remark-embedder`,
-          //   `gatsby-remark-graphviz`,
           {
             resolve: `gatsby-remark-images`,
             options: {
@@ -65,15 +94,37 @@ module.exports = {
               backgroundColor: `#ffffff`,
             },
           },
-          //   {
-          //     resolve: `gatsby-remark-responsive-iframe`,
-          //     options: {
-          //       wrapperStyle: `margin-bottom: 1.5rem`,
-          //     },
-          //   },
-          //   `gatsby-remark-autolink-headers`,
-          //   `gatsby-remark-copy-linked-files`,
-          //   `gatsby-remark-smartypants`,
+          {
+            resolve: `gatsby-remark-responsive-iframe`,
+            options: {
+              wrapperStyle: `margin-bottom: 1.5rem`,
+            },
+          },
+          `gatsby-remark-autolink-headers`,
+          `gatsby-remark-copy-linked-files`,
+        ],
+      },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 786,
+              backgroundColor: `#ffffff`,
+            },
+          },
+          {
+            resolve: `gatsby-remark-responsive-iframe`,
+            options: {
+              wrapperStyle: `margin-bottom: 1.5rem`,
+            },
+          },
+
+          `gatsby-remark-autolink-headers`,
+          `gatsby-remark-copy-linked-files`,
         ],
       },
     },
@@ -96,7 +147,7 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `assest`,
+        name: `assets`,
         path: `${__dirname}/src/assets`,
       },
     },

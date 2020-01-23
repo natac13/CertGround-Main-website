@@ -63,6 +63,7 @@ const Image = () => {
   const data = useStaticQuery(graphql`
     query {
       placeholderImage: file(
+        # relativePath: { eq: "src/assets/images/AerialLandScape.jpg" }
         relativePath: { eq: "images/AerialLandScape.jpg" }
       ) {
         childImageSharp {

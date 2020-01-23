@@ -9,7 +9,7 @@ export default makeStyles((theme) => ({
     width: '100%',
     height: '60vh',
     gridArea: '1/1/2/2',
-    filter: 'brightness(0.5)',
+    filter: 'brightness(0.6)',
     [theme.breakpoints.up('sm')]: {
       height: '80vh',
     },
@@ -25,7 +25,7 @@ export default makeStyles((theme) => ({
       .hsl()
       .string(),
     borderRadius: '12px',
-    padding: theme.spacing(0, 2),
+    padding: theme.spacing(4, 4),
     fontWeight: 'bold',
     letterSpacing: '1px',
     gridArea: '1/1/2/2',
