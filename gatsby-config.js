@@ -11,36 +11,12 @@ module.exports = {
     email: `sean.campbell13@gmail.com`,
     authorBio: `Creator, Designer, Mastermind`,
     authorLinkedIn: `https://www.linkedin.com/in/seancampbellnatac/`,
-    docsLink: `https://docs.certground.com`,
   },
   mapping: {
     'MarkdownRemark.frontmatter.author': `Sean Paul Campbell`,
     'Mdx.frontmatter.author': `Sean Paul Campbell`,
   },
   plugins: [
-    // {
-    //   resolve: 'gatsby-theme-docz',
-    //   options: {
-    //     gatsbyRemarkPlugins: [
-    //       {
-    //         resolve: `gatsby-remark-images`,
-    //         options: {
-    //           maxWidth: 786,
-    //           backgroundColor: `#ffffff`,
-    //         },
-    //       },
-    //       {
-    //         resolve: `gatsby-remark-responsive-iframe`,
-    //         options: {
-    //           wrapperStyle: `margin-bottom: 1.5rem`,
-    //         },
-    //       },
-
-    //       `gatsby-remark-autolink-headers`,
-    //       `gatsby-remark-copy-linked-files`,
-    //     ],
-    //   },
-    // },
     `gatsby-transformer-yaml`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -68,13 +44,13 @@ module.exports = {
         path: `${__dirname}/src/pages/`,
       },
     },
-    // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     name: `legal`,
-    //     path: `${__dirname}/src/legal/`,
-    //   },
-    // },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `docs`,
+        path: `${__dirname}/src/docs/`,
+      },
+    },
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
@@ -86,6 +62,10 @@ module.exports = {
         //       path.parse(node.dir).dir.endsWith(`packages`))
         //   )
         // },
+        defaultLayouts: {
+          docs: require.resolve('./src/components/DocsLayout/index.js'),
+          // default: require.resolve("./src/components/default-page-layout.js"),
+        },
         gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-remark-images`,
