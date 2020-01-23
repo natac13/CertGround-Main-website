@@ -74,7 +74,7 @@ const useStyles = makeStyles((theme) => ({
       minWidth: theme.spacing(4),
     },
     '& svg': {
-      color: theme.palette.primary.link,
+      color: 'currentColor',
       fontSize: theme.typography.h6.fontSize,
     },
   },

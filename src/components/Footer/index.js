@@ -49,6 +49,11 @@ const Footer = (props) => {
           docsLink
         }
       }
+      clientsYaml(name: { eq: "DEMO" }) {
+        name
+        appUrl
+        id
+      }
     }
   `)
   const classes = useStyles()
@@ -152,15 +157,13 @@ const Footer = (props) => {
 
           <ListItem
             component={MuiLink}
-            href={`http://${process.env.GATSBY_CLIENT_WEBSITE}`}
+            href={data.clientsYaml.appUrl}
             key="client-website"
           >
             <ListItemIcon>
               <OpenInNew />
             </ListItemIcon>
-            <ListItemText>
-              {`${process.env.GATSBY_CLIENT} Website`}
-            </ListItemText>
+            <ListItemText>{`${data.clientsYaml.name} Website`}</ListItemText>
           </ListItem>
         </List>
       </div>
