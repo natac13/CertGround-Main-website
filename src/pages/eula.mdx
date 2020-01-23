@@ -1,16 +1,19 @@
 ---
-title: End User License Agreement
-# path: /eula
-date: 2019-01-29
+title: End User License Agreement (EULA)
+path: /eula
+date: 2020-01-23
 ---
-import Layout from '../components/layout.js'
+import Layout from '../components/Layout/index.js'
 import Link from '../components/link.js'
+import Typography from '@material-ui/core/Typography'
+import format from 'date-fns/fp/format'
+import { graphql } from 'gatsby'
 
 export const year = '2020'
 
 <Layout>
 
-# End User License Agreement (Eula)
+<Typography variant="h2" component="h1" align="center">{props.pageContext.frontmatter.title}</Typography>
 
 Please read all the terms and conditions of this agreement with Sean Paul Campbell ("Campbell") carefully. By clicking "I agree", or by using the CertGround™️ Webapp, you agree to be bound by the terms and conditions of this agreement, even if you have not read them. It is important to read this entire agreement.
 

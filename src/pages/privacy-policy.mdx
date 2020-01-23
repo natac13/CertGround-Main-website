@@ -1,17 +1,18 @@
 ---
 title: Privacy Policy
 path: /privacy-policy
-# date: 2019-01-29
+date: 2020-01-19
 ---
 
-import Layout from '../components/layout.js'
+import Layout from '../components/Layout/index.js'
 import Link from '../components/link.js'
 import Typography from '@material-ui/core/Typography'
+import format from 'date-fns/fp/format'
 import { graphql } from 'gatsby'
 
 <Layout>
 
-# Privacy Policy
+<Typography variant="h2" component="h1" align="center">{props.pageContext.frontmatter.title}</Typography>
 
 This is Sean Paul Campbell's ("Campbell") privacy policy. This document explains Campbell's policies for the collection, use and disclosure of personal information. Campbell abides by applicable privacy legislation.
 
@@ -49,14 +50,17 @@ Individuals may review their personal information contained in Campbell files by
 
 Campbell may amend this policy from time to time by posting an updated version on our CertGround™️ Webapp if such amendments affect how Campbell uses or discloses personal information already held by Campbell in a material way, Campbell will obtain consent.
 
-This policy was last updated on Jan 19, 2020.
+<span>
+  This policy was last updated on 
+  <span> {format('PP')(new Date(props.pageContext.frontmatter.date))}</span>.
+</span>
 
 Notwithtanding the general terms of this policy, the collection, use, and disclosure of personal information may be made outside of the terms herein to the extent provided for in any applicable privacy or other legislation in effect from time to time, or pursuant to court orders.
 
 ## Contact Us
 
 <p>For more information on Campbell and privacy please contact our Privacy Officer at
-  <strong>{props.data.site.siteMetadata.email}</strong></p>
+  <strong> {props.data.site.siteMetadata.email}</strong></p>
 
 </Layout>
 
