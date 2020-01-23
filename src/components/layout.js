@@ -9,12 +9,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 
-import Header from './header'
+import Navbar from './Navbar'
 import Footer from './Footer'
 // import './layout.css'
 
 const Layout = (props) => {
-  const { children, noHeader, isLoggedIn } = props
+  const { children, noNavbar, isLoggedIn } = props
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -27,7 +27,7 @@ const Layout = (props) => {
 
   return (
     <>
-      {!noHeader && <Header siteTitle={data.site.siteMetadata.title} />}
+      {!noNavbar && <Navbar siteTitle={data.site.siteMetadata.title} />}
       <main>{children}</main>
       <Footer isLoggedIn={isLoggedIn} />
     </>
@@ -41,14 +41,14 @@ Layout.propTypes = {
   isLoggedIn: PropTypes.bool,
   push: PropTypes.func,
   noMenu: PropTypes.bool,
-  noHeader: PropTypes.bool,
+  noNavbar: PropTypes.bool,
   // noFeedback: PropTypes.bool,
   // wrapperClassName: PropTypes.string
 }
 
 Layout.defaultProps = {
   noMenu: false,
-  noHeader: false,
+  noNavbar: false,
   // noFeedback: false,
   isAdmin: false,
   isLoggedIn: false,

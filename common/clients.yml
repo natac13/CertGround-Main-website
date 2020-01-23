@@ -1,0 +1,4 @@
+- name: DEMO
+  appUrl: "https://demo.certground.com"
+- name: IBEW120
+  appUrl: "https://ibew120.certground.com"

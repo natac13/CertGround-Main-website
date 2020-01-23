@@ -19,33 +19,27 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const Header = ({ siteTitle }) => {
+const Navbar = ({ siteTitle }) => {
   const classes = useStyles()
   return (
-    <header className={classes.header}>
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `1.45rem 1.0875rem`,
-        }}
-      >
+    <nav className={classes.header}>
+      <div>
         <Link className={classes.headerText} css={{ color: 'white' }} to="/">
           {/* <p sx={{ color: 'secondary', fontSize: 8 }}>{siteTitle}</p> */}
           <Typography variant="h6">{siteTitle}</Typography>
           <Typography variant="h6">{process.env.GATSBY_CLIENT}</Typography>
         </Link>
       </div>
-    </header>
+    </nav>
   )
 }
 
-Header.propTypes = {
+Navbar.propTypes = {
   siteTitle: PropTypes.string,
 }
 
-Header.defaultProps = {
+Navbar.defaultProps = {
   siteTitle: ``,
 }
 
-export default Header
+export default Navbar
