@@ -86,7 +86,12 @@ const Image = () => {
         className={classes.image}
         fluid={data.placeholderImage.childImageSharp.fluid}
       />
-      <Typography variant="h1" className={classes.title} align="center">
+      <Typography
+        variant="h3"
+        component="h1"
+        className={classes.title}
+        align="center"
+      >
         {data.site.siteMetadata.title}
       </Typography>
     </div>

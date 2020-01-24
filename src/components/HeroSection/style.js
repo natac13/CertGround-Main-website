@@ -21,11 +21,12 @@ export default makeStyles((theme) => ({
     color: theme.palette.primary.main,
     textShadow: `2px 2px 4px ${theme.palette.primary.dark}`,
     backgroundColor: color(theme.palette.grey[100])
-      .alpha(0.6)
+      .alpha(0.66)
       .hsl()
       .string(),
     borderRadius: '12px',
-    padding: theme.spacing(4, 4),
+    padding: theme.spacing(2, 2),
+    // fontSize: '2.375rem',
     fontWeight: 'bold',
     letterSpacing: '1px',
     gridArea: '1/1/2/2',
