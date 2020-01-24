@@ -11,12 +11,38 @@ module.exports = {
     email: `sean.campbell13@gmail.com`,
     authorBio: `Creator, Designer, Mastermind`,
     authorLinkedIn: `https://www.linkedin.com/in/seancampbellnatac/`,
+    siteUrl: `https://www.certground.com`,
   },
   mapping: {
     'MarkdownRemark.frontmatter.author': `Sean Paul Campbell`,
     'Mdx.frontmatter.author': `Sean Paul Campbell`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          {
+            family: `Oswald`,
+            subsets: [`latin`],
+            variants: [`400`, `500`],
+          },
+          {
+            family: `Open Sans`,
+            subsets: [`latin`],
+            variants: [`300`, `400`, `400i`, `500`, `700`, `700i`],
+          },
+        ],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-nprogress`,
+      options: {
+        color: `#123434`,
+        showSpinner: false,
+      },
+    },
+    `gatsby-plugin-catch-links`,
     `gatsby-transformer-yaml`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -142,7 +168,7 @@ module.exports = {
         background_color: `#123434`,
         theme_color: `#123434`,
         display: `browser`,
-        icon: `src/assets/logos/CertGround-Logo-Circle.png`, // This path is relative to the root of the site.
+        icon: `src/assets/logos/CertGround-Monogram.png`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
