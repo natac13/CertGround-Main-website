@@ -1,12 +1,12 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 // import React from 'react'
-import { Link, useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby'
+import Link from '../../components/link'
 import PropTypes from 'prop-types'
-import Typography from '@material-ui/core/Typography'
-import { makeStyles, fade } from '@material-ui/core/styles'
-import { AppBar, Toolbar, IconButton } from '@material-ui/core'
-import { Magnify, Menu } from 'mdi-material-ui'
+import { makeStyles } from '@material-ui/core/styles'
+import { AppBar, Toolbar, IconButton, Button } from '@material-ui/core'
+import { Menu, GithubCircle, ViewDashboard } from 'mdi-material-ui'
 import Img from 'gatsby-image'
 
 const useStyles = makeStyles((theme) => ({
@@ -16,9 +16,6 @@ const useStyles = makeStyles((theme) => ({
   menuButton: {
     marginRight: theme.spacing(2),
     marginLeft: 'auto',
-    [theme.breakpoints.up('sm')]: {
-      display: 'none',
-    },
   },
   title: {
     // flexGrow: 1,
@@ -31,6 +28,43 @@ const useStyles = makeStyles((theme) => ({
     // height: '2rem',
     // padding: theme.spacing(1),
   },
+  toolbar: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    position: 'relative',
+  },
+  siteNav: {
+    [theme.breakpoints.down('xs')]: {
+      display: 'none',
+    },
+    display: 'block',
+    justifySelf: 'flex-start',
+    position: 'absolute',
+    left: '50%',
+    transform: 'translateX(-50%)',
+  },
+  navLink: {
+    color: theme.palette.common.offWhite,
+  },
+  sectionDesktop: {
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
+    },
+
+    [theme.breakpoints.up('sm')]: {
+      display: 'grid',
+      gridTemplateRows: '1fr',
+      gridTemplateColumns: 'repeat(2, 1fr)',
+    },
+  },
+  sectionMobile: {
+    [theme.breakpoints.up('sm')]: {
+      display: 'none',
+    },
+  },
+  icon: {
+    color: theme.palette.common.offWhite,
+  },
 }))
 
 const Navbar = ({ siteTitle }) => {
@@ -39,17 +73,22 @@ const Navbar = ({ siteTitle }) => {
     query {
       placeholderImage: file(
         # relativePath: { eq: "src/assets/images/AerialLandScape.jpg" }
-        relativePath: { eq: "logos/CertGround-Full-Logo-DarkBG.png" }
+        relativePath: { eq: "logos/CertGround-Full-Logo-DarkBG-Blue.png" }
       ) {
         name
         id
         childImageSharp {
-          fluid(maxWidth: 100) {
+          fluid(maxWidth: 300) {
             ...GatsbyImageSharpFluid
           }
-          # fixed(width: 120) {
-          #   ...GatsbyImageSharpFixed
-          # }
+        }
+      }
+      site {
+        siteMetadata {
+          author
+          authorLinkedIn
+          authorGithub
+          siteGithub
         }
       }
     }
@@ -58,7 +97,7 @@ const Navbar = ({ siteTitle }) => {
   return (
     <div className={classes.root}>
       <AppBar position="fixed">
-        <Toolbar>
+        <Toolbar className={classes.toolbar}>
           <Link to="/" className={classes.title}>
             <Img
               className={classes.image}
@@ -70,14 +109,76 @@ const Navbar = ({ siteTitle }) => {
               {siteTitle}
             </Typography> */}
           </Link>
-          <IconButton
-            edge="end"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <Menu />
-          </IconButton>
+          <div className={classes.siteNav}>
+            <Button className={classes.navLink} component={Link} to="/docs">
+              Docs
+            </Button>
+            <Button
+              className={classes.navLink}
+              component={Link}
+              to="/#features"
+            >
+              Features
+            </Button>
+            <Button className={classes.navLink} component={Link} to="/#clients">
+              Clients
+            </Button>
+            {/* <Button
+              className={classes.navLink}
+              component={Link}
+              to="/dashboard"
+            >
+              Dashboard
+            </Button> */}
+            {/* <Button className={classes.navLink} component={Link} to="/eula">
+              EULA
+            </Button>
+            <Button
+              className={classes.navLink}
+              component={Link}
+              to="/privacy-policy"
+            >
+              Privacy Policy
+            </Button> */}
+          </div>
+          <div className={classes.sectionDesktop}>
+            <a
+              href={data.site.siteMetadata.siteGithub}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <IconButton className={classes.icon}>
+                <GithubCircle />
+              </IconButton>
+            </a>
+            <Link to="/dashboard">
+              <IconButton className={classes.icon}>
+                <ViewDashboard />
+              </IconButton>
+            </Link>
+            {/* <a
+              href={data.site.siteMetadata.authorLinkedIn}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <IconButton className={classes.icon}>
+                <Linkedin />
+              </IconButton>
+            </a> */}
+            {/* <IconButton className={classes.icon}>
+              <ThemeLightDark />
+            </IconButton> */}
+          </div>
+          <div className={classes.sectionMobile}>
+            <IconButton
+              edge="end"
+              className={classes.menuButton}
+              color="inherit"
+              aria-label="open drawer"
+            >
+              <Menu />
+            </IconButton>
+          </div>
         </Toolbar>
       </AppBar>
     </div>
