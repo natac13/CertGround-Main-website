@@ -6,11 +6,13 @@ require(`dotenv`).config({
 module.exports = {
   siteMetadata: {
     title: `CertGround™️`,
-    description: `CertGround™️ Training Center Management SaaS. Built for the Construction industry.`,
+    description: `A Training Center Management SaaS. Built for the Construction industry.`,
     author: `Sean Paul Campbell`,
     email: `sean.campbell13@gmail.com`,
     authorBio: `Creator, Designer, Mastermind`,
     authorLinkedIn: `https://www.linkedin.com/in/seancampbellnatac/`,
+    authorGithub: `https://github.com/natac13`,
+    siteGithub: `https://github.com/natac13/CertGround-Main-website`,
     siteUrl: `https://www.certground.com`,
   },
   mapping: {
@@ -165,10 +167,10 @@ module.exports = {
         name: `CertGround™️ Training Center Management`,
         short_name: `CertGround™️`,
         start_url: `/`,
-        background_color: `#123434`,
-        theme_color: `#123434`,
+        background_color: `#132246`,
+        theme_color: `#132246`,
         display: `browser`,
-        icon: `src/assets/logos/CertGround-Monogram.png`, // This path is relative to the root of the site.
+        icon: `src/assets/logos/CertGround-Monogram-Blue.png`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

@@ -3,30 +3,16 @@ import color from 'color'
 export default makeStyles((theme) => ({
   wrapper: {
     display: 'grid',
-    placeItems: 'center center',
-  },
-  image: {
+    placeItems: 'baseline center',
     width: '100%',
-    height: '60vh',
-    gridArea: '1/1/2/2',
-    filter: 'brightness(0.6)',
-    [theme.breakpoints.up('sm')]: {
-      height: '80vh',
-    },
-    [theme.breakpoints.up('lg')]: {
-      height: '90vh',
-    },
+    height: '80vh',
+    backgroundColor: theme.palette.common.offWhite,
+  },
+  header: {
+    placeSelf: 'end center',
   },
   title: {
     color: theme.palette.primary.main,
-    textShadow: `2px 2px 4px ${theme.palette.primary.dark}`,
-    backgroundColor: color(theme.palette.grey[100])
-      .alpha(0.66)
-      .hsl()
-      .string(),
-    borderRadius: '12px',
-    padding: theme.spacing(2, 2),
-    // fontSize: '2.375rem',
     fontWeight: 'bold',
     letterSpacing: '1px',
     gridArea: '1/1/2/2',

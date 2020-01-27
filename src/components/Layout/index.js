@@ -11,9 +11,10 @@ import { useStaticQuery, graphql } from 'gatsby'
 
 import Navbar from '../Navbar'
 import Footer from '../Footer'
-// import './layout.css'
+import useStyles from './style'
 
 const Layout = (props) => {
+  const classes = useStyles()
   const { children, noNavbar, isLoggedIn } = props
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -28,7 +29,7 @@ const Layout = (props) => {
   return (
     <>
       {!noNavbar && <Navbar siteTitle={data.site.siteMetadata.title} />}
-      <main>{children}</main>
+      <main className={classes.main}>{children}</main>
       <Footer isLoggedIn={isLoggedIn} />
     </>
   )
