@@ -22,6 +22,7 @@ export default {
   },
   typography: {
     fontFamily: ['Open Sans', 'Helvetica', 'Arial', 'sans-serif'].join(','),
+    fontSize: 12,
     h1: {
       ...headerFont,
     },

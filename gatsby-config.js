@@ -3,6 +3,31 @@ require(`dotenv`).config({
   path: `.env`,
   // path: `.env.${process.env.NODE_ENV}`,
 })
+
+let mongoSourceOptions = {
+  collection: [`members`, `feedbacks`],
+}
+const isDev = process.env.NODE_ENV === 'development'
+const isProd = process.env.NODE_ENV === 'production'
+if (isDev) {
+  mongoSourceOptions = {
+    ...mongoSourceOptions,
+    dbName: 'ibew120',
+    clientOptions: { useUnifiedTopology: true },
+  }
+} else if (isProd) {
+  mongoSourceOptions = {
+    ...mongoSourceOptions,
+    dbName: 'ibew120',
+    connectionString: '',
+    auth: {
+      user: '',
+      pass: '',
+    },
+    clientOptions: {},
+  }
+}
+
 module.exports = {
   siteMetadata: {
     title: `CertGround™️`,
@@ -20,6 +45,10 @@ module.exports = {
     'Mdx.frontmatter.author': `Sean Paul Campbell`,
   },
   plugins: [
+    // {
+    //   resolve: `gatsby-source-mongodb`,
+    //   options: mongoSourceOptions,
+    // },
     {
       resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {

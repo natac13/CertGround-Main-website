@@ -13,6 +13,9 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
+  appBar: {
+    zIndex: theme.zIndex.drawer + 1,
+  },
   menuButton: {
     marginRight: theme.spacing(2),
     marginLeft: 'auto',
@@ -54,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       display: 'grid',
       gridTemplateRows: '1fr',
-      gridTemplateColumns: 'repeat(2, 1fr)',
+      gridTemplateColumns: 'repeat(1, 1fr)',
     },
   },
   sectionMobile: {
@@ -96,7 +99,7 @@ const Navbar = ({ siteTitle }) => {
 
   return (
     <div className={classes.root}>
-      <AppBar position="fixed">
+      <AppBar position="fixed" className={classes.appBar}>
         <Toolbar className={classes.toolbar}>
           <Link to="/" className={classes.title}>
             <Img
@@ -151,11 +154,11 @@ const Navbar = ({ siteTitle }) => {
                 <GithubCircle />
               </IconButton>
             </a>
-            <Link to="/dashboard">
+            {/* <Link to="/dashboard">
               <IconButton className={classes.icon}>
                 <ViewDashboard />
               </IconButton>
-            </Link>
+            </Link> */}
             {/* <a
               href={data.site.siteMetadata.authorLinkedIn}
               target="_blank"
