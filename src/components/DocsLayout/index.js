@@ -15,6 +15,7 @@ DocsTemplate.propTypes = {
     mdx: PropTypes.shape({
       id: PropTypes.string,
       body: PropTypes.string,
+      fileAbsolutePath: PropTypes.string,
       frontmatter: PropTypes.shape({
         title: PropTypes.string,
       }),
@@ -46,7 +47,10 @@ export default function DocsTemplate(props) {
         </div>
         <div className={classes.articleWrapper}>
           <div className={classes.editThisPageBtn}>
-            <EditThisPage slug={uri} />
+            <EditThisPage
+              slug={uri}
+              isIndex={Boolean(mdx.fileAbsolutePath.match(/index.mdx$/i))}
+            />
           </div>
           <article className={classes.article}>
             <Typography variant="h2" component="h1">
@@ -65,6 +69,7 @@ export const pageQuery = graphql`
     mdx(id: { eq: $id }) {
       id
       body
+      fileAbsolutePath
       frontmatter {
         title
       }
