@@ -4,6 +4,7 @@ path: /eula
 date: 2020-01-23
 ---
 import Layout from '../components/Layout/index.js'
+import LegalWrapper from '../components/LegalWrapper/index.js'
 import Link from '../components/link.js'
 import Typography from '@material-ui/core/Typography'
 import format from 'date-fns/fp/format'
@@ -12,6 +13,7 @@ import { graphql } from 'gatsby'
 export const year = '2020'
 
 <Layout>
+  <LegalWrapper>
 
 <Typography variant="h2" component="h1" align="center">{props.pageContext.frontmatter.title}</Typography>
 
@@ -53,4 +55,5 @@ This CertGround™️ Webapp is governed by the laws of the Province of Ontario 
 
 Please see out <Link to="/privacy-policy">Privacy Policy</Link>
 
+  </LegalWrapper>
 </Layout>

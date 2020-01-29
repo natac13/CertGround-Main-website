@@ -1,22 +1,20 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 // import React from 'react'
-import { makeStyles, Typography } from '@material-ui/core'
+import { /* makeStyles,  */ Typography } from '@material-ui/core'
 // import Link from '../components/link'
 import Layout from '../components/Layout'
 import SEO from '../components/seo'
-import HeroImage from '../components/HeroSection'
-import { graphql } from 'gatsby'
+// import { graphql } from 'gatsby'
 
-const useStyles = makeStyles((theme) => ({
-  hero: {
-    position: 'relative',
-  },
-}))
+// const useStyles = makeStyles((theme) => ({
+//   hero: {
+//     position: 'relative',
+//   },
+// }))
 
 const Dashboard = (props) => {
-  console.log(props)
-  const classes = useStyles()
+  // const classes = useStyles()
 
   return (
     <Layout>

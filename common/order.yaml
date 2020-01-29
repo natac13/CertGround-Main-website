@@ -1,0 +1,25 @@
+- header: intro
+  subItems:
+    - index
+    - getting-started
+- header: overview
+  subItems:
+    - sign-up
+    - navigation
+    - forgot-password
+- header: member
+  subItems:
+    - member-profile
+    - change-password
+- header: course
+  subItems:
+    - course-vs-class
+    - certification-share
+- header: class
+  subItems:
+    - class-calendar
+- header: email
+  subItems: []
+- header: feedback
+  subItems:
+    - index

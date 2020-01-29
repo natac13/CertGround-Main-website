@@ -1,5 +1,4 @@
 import { makeStyles } from '@material-ui/core'
-import color from 'color'
 export default makeStyles((theme) => ({
   wrapper: {
     display: 'grid',
@@ -7,6 +6,7 @@ export default makeStyles((theme) => ({
     width: '100%',
     height: '80vh',
     backgroundColor: theme.palette.common.offWhite,
+    marginBottom: theme.spacing(6),
   },
   header: {
     placeSelf: 'end center',
