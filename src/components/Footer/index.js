@@ -1,28 +1,16 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
-import { useState } from 'react'
 import R from 'ramda'
 import Link from '../link'
 import PropTypes from 'prop-types'
 import Typography from '@material-ui/core/Typography'
 import MuiLink from '@material-ui/core/Link'
 
-import {
-  FileDocumentOutline,
-  HomeOutline,
-  CommentTextOutline,
-  OpenInNew,
-} from 'mdi-material-ui'
+import { FileDocumentOutline, HomeOutline } from 'mdi-material-ui'
 
 import useStyles from './style'
 
-import {
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Tooltip,
-  List,
-} from '@material-ui/core'
+import { ListItem, ListItemIcon, ListItemText, List } from '@material-ui/core'
 import { useStaticQuery, graphql } from 'gatsby'
 
 const style = {}
@@ -56,9 +44,6 @@ const Footer = (props) => {
     }
   `)
   const classes = useStyles()
-
-  const { isLoggedIn } = props
-  const [feedbackOpen, setFeedbackOpen] = useState(false)
 
   const ackDisplay = R.map(({ node }) => (
     <ListItem key={node.id} align="center">
@@ -97,28 +82,6 @@ const Footer = (props) => {
             </ListItemIcon>
             <ListItemText>Home Page</ListItemText>
           </ListItem>
-
-          {/* <Tooltip
-            disableHoverListener={isLoggedIn}
-            disableTouchListener={isLoggedIn}
-            disableFocusListener={isLoggedIn}
-            title="Please Log In."
-          >
-            <ListItem
-              key="feedback"
-              component={MuiLink}
-              onClick={() => {
-                if (isLoggedIn) {
-                  setFeedbackOpen(true)
-                }
-              }}
-            >
-              <ListItemIcon>
-                <CommentTextOutline />
-              </ListItemIcon>
-              <ListItemText>Feedback</ListItemText>
-            </ListItem>
-          </Tooltip> */}
           <ListItem
             component={Link}
             to="/eula"
@@ -155,7 +118,7 @@ const Footer = (props) => {
             <ListItemText>Documentation</ListItemText>
           </ListItem>
 
-          <ListItem
+          {/* <ListItem
             component={MuiLink}
             href={data.clientsYaml.appUrl}
             key="client-website"
@@ -164,7 +127,7 @@ const Footer = (props) => {
               <OpenInNew />
             </ListItemIcon>
             <ListItemText>{`${data.clientsYaml.name} Website`}</ListItemText>
-          </ListItem>
+          </ListItem> */}
         </List>
       </div>
       <div className={classes.me}>

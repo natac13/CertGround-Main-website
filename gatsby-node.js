@@ -63,7 +63,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     // console.log(node.fields.slug.split('/'))
     const slugArray = R.compose(
       R.reject(R.equals('')),
-      R.split('/'),
+      R.split('/')
     )(node.fields.slug)
     const parentPath = R.compose(R.init(), R.tail())(slugArray)
     createPage({

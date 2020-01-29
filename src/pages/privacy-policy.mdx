@@ -5,12 +5,14 @@ date: 2020-01-19
 ---
 
 import Layout from '../components/Layout/index.js'
+import LegalWrapper from '../components/LegalWrapper/index.js'
 import Link from '../components/link.js'
 import Typography from '@material-ui/core/Typography'
 import format from 'date-fns/fp/format'
 import { graphql } from 'gatsby'
 
 <Layout>
+  <LegalWrapper>
 
 <Typography variant="h2" component="h1" align="center">{props.pageContext.frontmatter.title}</Typography>
 
@@ -62,6 +64,7 @@ Notwithtanding the general terms of this policy, the collection, use, and disclo
 <p>For more information on Campbell and privacy please contact our Privacy Officer at
   <strong> {props.data.site.siteMetadata.email}</strong></p>
 
+  </LegalWrapper>
 </Layout>
 
 export const query = graphql`

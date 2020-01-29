@@ -4,71 +4,24 @@ import { jsx } from '@emotion/core'
 import { useStaticQuery, graphql } from 'gatsby'
 import Link from '../../components/link'
 import PropTypes from 'prop-types'
-import { makeStyles } from '@material-ui/core/styles'
-import { AppBar, Toolbar, IconButton, Button } from '@material-ui/core'
-import { Menu, GithubCircle, ViewDashboard } from 'mdi-material-ui'
+
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Button,
+  MenuItem,
+  Menu,
+} from '@material-ui/core'
+import {
+  Menu as MenuIcon,
+  GithubCircle,
+  ChevronDoubleRight as ChevronIcon,
+} from 'mdi-material-ui'
 import Img from 'gatsby-image'
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  appBar: {
-    zIndex: theme.zIndex.drawer + 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-    marginLeft: 'auto',
-  },
-  title: {
-    // flexGrow: 1,
-    display: 'flex',
-    color: theme.palette.common.white,
-    textDecoration: 'none',
-  },
-  image: {
-    width: '12rem',
-    // height: '2rem',
-    // padding: theme.spacing(1),
-  },
-  toolbar: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    position: 'relative',
-  },
-  siteNav: {
-    [theme.breakpoints.down('xs')]: {
-      display: 'none',
-    },
-    display: 'block',
-    justifySelf: 'flex-start',
-    position: 'absolute',
-    left: '50%',
-    transform: 'translateX(-50%)',
-  },
-  navLink: {
-    color: theme.palette.common.offWhite,
-  },
-  sectionDesktop: {
-    [theme.breakpoints.down('sm')]: {
-      display: 'none',
-    },
-
-    [theme.breakpoints.up('sm')]: {
-      display: 'grid',
-      gridTemplateRows: '1fr',
-      gridTemplateColumns: 'repeat(1, 1fr)',
-    },
-  },
-  sectionMobile: {
-    [theme.breakpoints.up('sm')]: {
-      display: 'none',
-    },
-  },
-  icon: {
-    color: theme.palette.common.offWhite,
-  },
-}))
+import useStyles from './style.js'
+import { useState } from 'react'
 
 const Navbar = ({ siteTitle }) => {
   const classes = useStyles()
@@ -96,6 +49,54 @@ const Navbar = ({ siteTitle }) => {
       }
     }
   `)
+
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null)
+  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl)
+  const handleMobileMenuClose = () => {
+    setMobileMoreAnchorEl(null)
+  }
+
+  const handleMobileMenuOpen = (event) => {
+    setMobileMoreAnchorEl(event.currentTarget)
+  }
+
+  const mobileMenuId = 'navbar-mobile-menu'
+
+  const renderMobileMenu = (
+    <Menu
+      // className={style.mobileMenu}
+      anchorEl={mobileMoreAnchorEl}
+      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+      id={mobileMenuId}
+      keepMounted
+      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+      open={isMobileMenuOpen}
+      onClose={handleMobileMenuClose}
+    >
+      <MenuItem component={Link} to="/docs" onClick={handleMobileMenuClose}>
+        <IconButton>
+          <ChevronIcon />
+        </IconButton>
+        <p>Docs</p>
+      </MenuItem>
+      <MenuItem
+        component={Link}
+        to="/#features"
+        onClick={handleMobileMenuClose}
+      >
+        <IconButton>
+          <ChevronIcon />
+        </IconButton>
+        <p>Features</p>
+      </MenuItem>
+      <MenuItem component={Link} to="/#clients" onClick={handleMobileMenuClose}>
+        <IconButton>
+          <ChevronIcon />
+        </IconButton>
+        <p>Clients</p>
+      </MenuItem>
+    </Menu>
+  )
 
   return (
     <div className={classes.root}>
@@ -177,12 +178,14 @@ const Navbar = ({ siteTitle }) => {
               edge="end"
               className={classes.menuButton}
               color="inherit"
+              onClick={handleMobileMenuOpen}
               aria-label="open drawer"
             >
-              <Menu />
+              <MenuIcon />
             </IconButton>
           </div>
         </Toolbar>
+        {renderMobileMenu}
       </AppBar>
     </div>
   )
