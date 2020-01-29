@@ -119,9 +119,17 @@ export default function DocsNav(props) {
           if (R.length(subItems) <= 0) {
             return null
           } else if (R.length(subItems) === 1) {
-            const node = R.find(({ fields }) =>
-              R.includes(subItems[0], fields.slug)
-            )(nav.nodes)
+            let node
+            if (subItems[0] === 'index') {
+              const regex = new RegExp(`${header}/$`, 'i')
+              node = R.find(({ fields }) => {
+                return fields.slug.match(regex)
+              })(nav.nodes)
+            } else {
+              node = R.find(({ fields }) =>
+                R.includes(subItems[0], fields.slug)
+              )(nav.nodes)
+            }
             if (node) {
               return (
                 <ListItem

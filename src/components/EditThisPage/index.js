@@ -8,6 +8,11 @@ import useStyle from './style.js'
 
 EditThisPage.propTypes = {
   slug: PropTypes.string.isRequired,
+  isIndex: PropTypes.bool,
+}
+
+EditThisPage.defaultProps = {
+  isIndex: false,
 }
 
 export default function EditThisPage(props) {
@@ -21,16 +26,31 @@ export default function EditThisPage(props) {
       }
     }
   `)
-  return (
-    <Button
-      // component={MuiLink}
-      target="_blank"
-      rel="noopener noreferrer"
-      href={`${data.site.siteMetadata.siteGithub}/blob/master/src/docs${props.slug}.mdx`}
-      className={classes.link}
-      startIcon={<EditIcon />}
-    >
-      <Typography variant="body1">Edit this page</Typography>
-    </Button>
-  )
+  if (props.isIndex) {
+    return (
+      <Button
+        // component={MuiLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        href={`${data.site.siteMetadata.siteGithub}/blob/master/src/docs${props.slug}/index.mdx`}
+        className={classes.link}
+        startIcon={<EditIcon />}
+      >
+        <Typography variant="body1">Edit this page</Typography>
+      </Button>
+    )
+  } else {
+    return (
+      <Button
+        // component={MuiLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        href={`${data.site.siteMetadata.siteGithub}/blob/master/src/docs${props.slug}.mdx`}
+        className={classes.link}
+        startIcon={<EditIcon />}
+      >
+        <Typography variant="body1">Edit this page</Typography>
+      </Button>
+    )
+  }
 }
