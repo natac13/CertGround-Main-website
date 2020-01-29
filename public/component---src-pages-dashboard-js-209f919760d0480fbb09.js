@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[4],{sFYk:function(t,a,n){"use strict";n.r(a);var r=n("qKvR"),e=n("ofer"),o=n("Zttt"),s=n("vrFN");a.default=function(t){return Object(r.a)(o.a,null,Object(r.a)(s.a,{title:"Dashboard"}),Object(r.a)(e.a,{variant:"h3"}," Work In Progress"))}}}]);
+//# sourceMappingURL=component---src-pages-dashboard-js-209f919760d0480fbb09.js.map
