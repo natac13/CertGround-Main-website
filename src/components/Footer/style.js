@@ -5,7 +5,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     backgroundColor: '#222',
     height: 'auto',
-    width: '100vw',
+    width: '100%',
     display: 'grid',
     gridTemplateColumns: 'repeat(1, 1fr)',
     gridAutoRows: 'auto',
