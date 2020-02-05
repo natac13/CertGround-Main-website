@@ -28,7 +28,7 @@ export default makeStyles((theme) => ({
     position: 'fixed',
     zIndex: theme.zIndex.modal + 1,
     right: '2rem',
-    bottom: '4rem',
+    bottom: '2rem',
     // backgroundColor: theme.palette.primary.light,
     // color: theme.palette.common.offWhite,
     '& svg': {
