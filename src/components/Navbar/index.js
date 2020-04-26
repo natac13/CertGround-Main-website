@@ -15,7 +15,7 @@ import {
 } from '@material-ui/core'
 import {
   Menu as MenuIcon,
-  GithubCircle,
+  Github,
   ChevronDoubleRight as ChevronIcon,
 } from 'mdi-material-ui'
 import Img from 'gatsby-image'
@@ -152,7 +152,7 @@ const Navbar = ({ siteTitle }) => {
               rel="noopener noreferrer"
             >
               <IconButton className={classes.icon}>
-                <GithubCircle />
+                <Github />
               </IconButton>
             </a>
             {/* <Link to="/dashboard">
