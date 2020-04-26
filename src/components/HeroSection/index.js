@@ -29,6 +29,10 @@ const Image = () => {
 
   return (
     <div className={classes.wrapper}>
+      <Img
+        className={classes.image}
+        fixed={data.placeholderImage.childImageSharp.fixed}
+      />
       <header className={classes.header}>
         <Typography
           variant="h3"
@@ -42,10 +46,6 @@ const Image = () => {
           {data.site.siteMetadata.description}
         </Typography>
       </header>
-      <Img
-        className={classes.image}
-        fixed={data.placeholderImage.childImageSharp.fixed}
-      />
     </div>
   )
 }

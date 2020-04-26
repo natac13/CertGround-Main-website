@@ -13,6 +13,8 @@ import Img from 'gatsby-image'
 const useStyles = makeStyles((theme) => ({
   hero: {
     position: 'relative',
+    display: 'grid',
+    placeItems: 'center center',
   },
   clientsWrapper: {
     display: 'grid',

@@ -31,7 +31,7 @@ if (isDev) {
 module.exports = {
   siteMetadata: {
     title: `CertGround™️`,
-    description: `A Training Center Management SaaS. Built for the Construction industry. Allows the verification of Certificates without physically sharing cards.`,
+    description: `Giving organizations a Training Center Management webapp. Built with the construction industry in mind to allow workers the ability to show their safety & skills certificates without physically sharing cards.`,
     author: `Sean Paul Campbell`,
     email: `sean.campbell13@gmail.com`,
     authorBio: `Creator, Designer, Mastermind`,
