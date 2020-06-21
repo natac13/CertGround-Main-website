@@ -14,12 +14,6 @@ export default makeStyles((theme) => ({
     marginRight: theme.spacing(2),
     marginLeft: 'auto',
   },
-  title: {
-    // flexGrow: 1,
-    display: 'flex',
-    color: theme.palette.common.white,
-    textDecoration: 'none',
-  },
   image: {
     width: '12rem',
     // height: '2rem',
@@ -30,36 +24,49 @@ export default makeStyles((theme) => ({
     justifyContent: 'space-between',
     position: 'relative',
   },
+  title: {
+    flex: 1,
+    display: 'flex',
+    placeContent: 'center flex-start',
+  },
   siteNav: {
-    [theme.breakpoints.down('xs')]: {
-      display: 'none',
+    flex: 1,
+    display: 'flex',
+    justifyContent: 'space-around',
+    alignContent: 'center',
+  },
+  iconsDesktop: {
+    flex: 1,
+    display: 'flex',
+    placeContent: 'center flex-end',
+    [theme.breakpoints.up('sm')]: {
+      display: 'flex',
     },
-    display: 'block',
-    justifySelf: 'flex-start',
-    position: 'absolute',
-    left: '50%',
-    transform: 'translateX(-50%)',
+  },
+  darkModeIcon: {
+    '& svg': {
+      transform: 'rotate(33deg)',
+    },
   },
   navLink: {
-    color: theme.palette.common.offWhite,
+    color: theme.palette.getContrastText(theme.palette.primary.main),
   },
-  sectionDesktop: {
-    [theme.breakpoints.down('sm')]: {
-      display: 'none',
-    },
-
-    [theme.breakpoints.up('sm')]: {
-      display: 'grid',
-      gridTemplateRows: '1fr',
-      gridTemplateColumns: 'repeat(1, 1fr)',
-    },
-  },
-  sectionMobile: {
-    [theme.breakpoints.up('sm')]: {
-      display: 'none',
-    },
-  },
+  sectionMobile: {},
   icon: {
-    color: theme.palette.common.offWhite,
+    color: theme.palette.getContrastText(theme.palette.primary.main),
+  },
+  mobileMenu: {
+    width: theme.spacing(36),
+    border: `2px solid ${theme.palette.text.primary}`,
+  },
+  mobileDarkModeToggle: {
+    display: 'flex',
+    padding: theme.spacing(2),
+    placeContent: 'center center',
+  },
+  mobileIcons: {
+    display: 'flex',
+    justifyContent: 'space-around',
+    padding: theme.spacing(2),
   },
 }))

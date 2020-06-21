@@ -3,30 +3,31 @@ require(`dotenv`).config({
   path: `.env`,
   // path: `.env.${process.env.NODE_ENV}`,
 })
+const siteAddress = new URL(`http://certground.com`)
 
-let mongoSourceOptions = {
-  collection: [`members`, `feedbacks`],
-}
-const isDev = process.env.NODE_ENV === 'development'
-const isProd = process.env.NODE_ENV === 'production'
-if (isDev) {
-  mongoSourceOptions = {
-    ...mongoSourceOptions,
-    dbName: 'ibew120',
-    clientOptions: { useUnifiedTopology: true },
-  }
-} else if (isProd) {
-  mongoSourceOptions = {
-    ...mongoSourceOptions,
-    dbName: 'ibew120',
-    connectionString: '',
-    auth: {
-      user: '',
-      pass: '',
-    },
-    clientOptions: {},
-  }
-}
+// let mongoSourceOptions = {
+//   collection: [`members`, `feedbacks`],
+// }
+// const isDev = process.env.NODE_ENV === 'development'
+// const isProd = process.env.NODE_ENV === 'production'
+// if (isDev) {
+//   mongoSourceOptions = {
+//     ...mongoSourceOptions,
+//     dbName: 'ibew120',
+//     clientOptions: { useUnifiedTopology: true },
+//   }
+// } else if (isProd) {
+//   mongoSourceOptions = {
+//     ...mongoSourceOptions,
+//     dbName: 'ibew120',
+//     connectionString: '',
+//     auth: {
+//       user: '',
+//       pass: '',
+//     },
+//     clientOptions: {},
+//   }
+// }
 
 module.exports = {
   siteMetadata: {
@@ -45,10 +46,21 @@ module.exports = {
     'Mdx.frontmatter.author': `Sean Paul Campbell`,
   },
   plugins: [
-    // {
-    //   resolve: `gatsby-source-mongodb`,
-    //   options: mongoSourceOptions,
-    // },
+    {
+      resolve: `gatsby-plugin-s3`,
+      options: {
+        bucketName: `certground.com`,
+        protocol: siteAddress.protocol.slice(0, -1),
+        hostname: siteAddress.hostname,
+        generateMatchPathRewrites: false,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-canonical-urls`,
+      options: {
+        siteUrl: siteAddress.href.slice(0, -1),
+      },
+    },
     {
       resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {
@@ -69,7 +81,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-nprogress`,
       options: {
-        color: `#132246`,
+        color: `#1d5d99`,
         showSpinner: false,
       },
     },
@@ -112,16 +124,8 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.md`, `.mdx`],
-        // shouldBlockNodeFromTransformation(node) {
-        //   return (
-        //     [`NPMPackage`, `NPMPackageReadme`].includes(node.internal.type) ||
-        //     (node.internal.type === `File` &&
-        //       path.parse(node.dir).dir.endsWith(`packages`))
-        //   )
-        // },
         defaultLayouts: {
           docs: require.resolve('./src/components/DocsLayout/index.js'),
-          // default: require.resolve("./src/components/default-page-layout.js"),
         },
         gatsbyRemarkPlugins: [
           {
@@ -196,14 +200,15 @@ module.exports = {
         name: `CertGround™️ Training Center Management`,
         short_name: `CertGround™️`,
         start_url: `/`,
-        background_color: `#132246`,
-        theme_color: `#132246`,
+        background_color: `#1d5d99`,
+        theme_color: `#1d5d99`,
         display: `browser`,
-        icon: `src/assets/logos/CertGround-Monogram-Blue.png`, // This path is relative to the root of the site.
+        icon: `./src/assets/logos/CertGround-Monogram-White-BlueBG.png`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+    `gatsby-plugin-client-side-redirect`, // keep it in last in list
   ],
 }

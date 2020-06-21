@@ -2,18 +2,61 @@ const headerFont = {
   fontFamily: ['Oswald', 'sans-serif'].join(','),
 }
 
+export const lightPalette = {
+  palette: {
+    type: 'light',
+    primary: {
+      main: '#1d5d99',
+      light: '#4a7dad',
+      dark: '#14416b',
+      contrastText: '#fff',
+    },
+    secondary: {
+      main: '#887400',
+      light: '#9f8f33',
+      dark: '#5f5100',
+      contrastText: '#fff',
+    },
+    background: {
+      default: '#fcfcfc',
+    },
+  },
+}
+
+export const darkPalette = {
+  palette: {
+    type: 'dark',
+    primary: {
+      main: '#2a85db',
+      light: '#549de2',
+      dark: '#1d5d99',
+      contrastText: '#1a1a1a',
+    },
+    secondary: {
+      main: '#B29700',
+      light: '#c1ab33',
+      dark: '#7c6900',
+      contrastText: '#1a1a1a',
+    },
+    background: {
+      default: '#1a1a1a',
+      paper: '#2b2b2b',
+    },
+  },
+}
+
 export default {
   overrides: {
-    MuiLink: {
-      root: {
-        color: '#1A5999',
+    // MuiLink: {
+    //   root: {
+    //     color: '#1A5999',
 
-        '&:hover': {
-          color: '#c1ab33',
-          textDecoration: ['none', '!important'],
-        },
-      },
-    },
+    //     '&:hover': {
+    //       color: '#c1ab33',
+    //       textDecoration: ['none', '!important'],
+    //     },
+    //   },
+    // },
     MuiListItemIcon: {
       root: {
         color: 'none',
@@ -46,38 +89,6 @@ export default {
     },
     subtitle2: {
       ...headerFont,
-    },
-  },
-  palette: {
-    type: 'light',
-    // primary: {
-    //   main: '#123434',
-    //   light: '#415c5c',
-    //   dark: '#0c2424',
-    // },
-    common: {
-      offWhite: '#FBFBFF',
-      offBlack: '#060705',
-    },
-    primary: {
-      main: '#132246',
-      light: '#424e6b',
-      dark: '#0d1731',
-    },
-    secondary: {
-      main: '#B29700',
-      light: '#c1ab33',
-      dark: '#7c6900',
-    },
-    // tertiary: {
-    //   main: '#086375',
-    //   light: '#398290',
-    //   dark: '#054551',
-    // },
-    tertiary: {
-      main: '#1A5999',
-      light: '#477aad',
-      dark: '#123e6b',
     },
   },
 }

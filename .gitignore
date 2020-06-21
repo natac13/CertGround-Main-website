@@ -108,5 +108,5 @@ tmp/
 temp/
 
 /public
-
+cypress/integration
 # End of https://www.gitignore.io/api/node

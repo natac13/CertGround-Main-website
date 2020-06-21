@@ -1,5 +1,4 @@
-/** @jsx jsx */
-import { jsx } from '@emotion/core'
+import React from 'react'
 import R from 'ramda'
 import Link from '../link'
 import PropTypes from 'prop-types'
@@ -12,8 +11,120 @@ import useStyles from './style'
 
 import { ListItem, ListItemIcon, ListItemText, List } from '@material-ui/core'
 import { useStaticQuery, graphql } from 'gatsby'
+import Img from 'gatsby-image'
+import useIsMobile from '../../utils/isMobile'
 
-const style = {}
+export const PureFooter = ({ data }) => {
+  const classes = useStyles()
+  const isMobile = useIsMobile()
+
+  const ackDisplay = R.map(({ node }) => (
+    <ListItem key={node.id} className={classes.ack__listItem}>
+      <span>{node.name}</span>
+    </ListItem>
+  ))(data.allAcknowledgementsYaml.edges)
+  return (
+    <footer className={classes.footer} id="footer" data-testid="footer">
+      <a href={data.site.siteMetadata.mainSiteUrl} className={classes.title}>
+        <Img
+          fixed={data.CertGroundLogo.childImageSharp.fixed}
+          alt={data.site.siteMetadata.title}
+        />
+      </a>
+
+      <div className={classes.ack}>
+        <Typography variant="h5" component="h3" align="center">
+          Acknowledgements
+        </Typography>
+        <List>{ackDisplay}</List>
+      </div>
+
+      <List id="footer-nav" component="nav" className={classes.nav}>
+        <ListItem
+          component={Link}
+          to="/"
+          key="homePage"
+          className={classes.link}
+          aria-label="Home Page Link Footer"
+        >
+          <ListItemIcon className={classes.linkIcon}>
+            <HomeOutline />
+          </ListItemIcon>
+          <ListItemText>Home Page</ListItemText>
+        </ListItem>
+
+        <ListItem
+          key="docs"
+          className={classes.link}
+          component={Link}
+          href={`/docs/intro`}
+          aria-label="Documentation Link"
+        >
+          <ListItemIcon className={classes.linkIcon}>
+            <FileDocumentOutline />
+          </ListItemIcon>
+          <ListItemText>{isMobile ? 'Docs' : 'Documentation'}</ListItemText>
+        </ListItem>
+
+        <ListItem
+          key="EULA"
+          className={classes.link}
+          component={Link}
+          href={`/eula/`}
+          aria-label="End User License Agreement Link"
+        >
+          <ListItemIcon className={classes.linkIcon}>
+            <FileDocumentOutline />
+          </ListItemIcon>
+          <ListItemText>EULA</ListItemText>
+        </ListItem>
+
+        <ListItem
+          key="privacy-policy"
+          className={classes.link}
+          component={Link}
+          href={`/privacy-policy/`}
+          aria-label="Privacy Policy Link"
+        >
+          <ListItemIcon className={classes.linkIcon}>
+            <FileDocumentOutline />
+          </ListItemIcon>
+          <ListItemText>Privacy Policy</ListItemText>
+        </ListItem>
+      </List>
+
+      <MuiLink
+        className={classes.me}
+        href={data.site.siteMetadata.authorLinkedIn}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`${data.site.siteMetadata.author} LinkedIn profile page link`}
+      >
+        <Typography
+          variant="h5"
+          component="h4"
+          className={classes.me__name}
+          align="center"
+        >
+          {data.site.siteMetadata.author}
+        </Typography>
+        <Typography
+          variant="h6"
+          component="h4"
+          className={classes.me__bio}
+          align="center"
+        >
+          {data.site.siteMetadata.authorBio}
+        </Typography>
+      </MuiLink>
+
+      <Typography className={classes.copyright} variant="body2" align="right">
+        {`©️ ${new Date().getFullYear()} ${data.site.siteMetadata.author}.`}
+      </Typography>
+    </footer>
+  )
+}
+
 const Footer = (props) => {
   const data = useStaticQuery(graphql`
     query FooterPage {
@@ -21,7 +132,6 @@ const Footer = (props) => {
         edges {
           node {
             name
-            reason
             id
           }
         }
@@ -32,128 +142,28 @@ const Footer = (props) => {
           authorBio
           author
           description
-          title
           authorLinkedIn
         }
       }
-      clientsYaml(name: { eq: "DEMO" }) {
-        name
-        appUrl
-        id
+      CertGroundLogo: file(
+        relativePath: { eq: "logos/CertGround-Logo-Full-White-BlueBG.png" }
+      ) {
+        childImageSharp {
+          fixed(width: 300) {
+            ...GatsbyImageSharpFixed
+          }
+        }
       }
     }
   `)
-  const classes = useStyles()
-
-  const ackDisplay = R.map(({ node }) => (
-    <ListItem key={node.id} align="center">
-      <Typography variant="subtitle1" color="secondary" align="center">
-        <span>{node.name}</span> - <span>{node.reason}</span>
-      </Typography>
-    </ListItem>
-  ))(data.allAcknowledgementsYaml.edges)
-  return (
-    <footer className={classes.footer}>
-      {/* {isLoggedIn && (
-        <Feedback
-          feedbackOpen={feedbackOpen}
-          setFeedbackOpen={setFeedbackOpen}
-        />
-      )} */}
-      <Link to="/" className={classes.title}>
-        <Typography variant="h5">{data.site.siteMetadata.title}</Typography>
-      </Link>
-      <div className={classes.ack}>
-        <Typography variant="h5" color="secondary" align="center" gutterBottom>
-          Acknowledgements
-        </Typography>
-        <List>{ackDisplay}</List>
-      </div>
-      <div className={classes.nav}>
-        <List>
-          <ListItem
-            component={Link}
-            to="/"
-            key="homePage"
-            className={style.link}
-          >
-            <ListItemIcon>
-              <HomeOutline />
-            </ListItemIcon>
-            <ListItemText>Home Page</ListItemText>
-          </ListItem>
-          <ListItem
-            component={Link}
-            to="/eula"
-            key="EULA"
-            className={style.link}
-          >
-            <ListItemIcon>
-              <FileDocumentOutline />
-            </ListItemIcon>
-            <ListItemText>EULA</ListItemText>
-          </ListItem>
-
-          <ListItem
-            component={Link}
-            to="/privacy-policy"
-            key="privacy-policy"
-            className={style.link}
-          >
-            <ListItemIcon>
-              <FileDocumentOutline />
-            </ListItemIcon>
-            <ListItemText>Privacy Policy</ListItemText>
-          </ListItem>
-
-          <ListItem
-            component={Link}
-            // href={data.site.siteMetadata.docsLink}
-            to="/docs"
-            key="docs"
-          >
-            <ListItemIcon>
-              <FileDocumentOutline />
-            </ListItemIcon>
-            <ListItemText>Documentation</ListItemText>
-          </ListItem>
-
-          {/* <ListItem
-            component={MuiLink}
-            href={data.clientsYaml.appUrl}
-            key="client-website"
-          >
-            <ListItemIcon>
-              <OpenInNew />
-            </ListItemIcon>
-            <ListItemText>{`${data.clientsYaml.name} Website`}</ListItemText>
-          </ListItem> */}
-        </List>
-      </div>
-      <div className={classes.me}>
-        <MuiLink
-          href={data.site.siteMetadata.authorLinkedIn}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Typography variant="h5" className={classes.me__name} align="center">
-            {data.site.siteMetadata.author}
-          </Typography>
-          <Typography variant="h6" className={classes.me__bio} align="center">
-            {data.site.siteMetadata.authorBio}
-          </Typography>
-        </MuiLink>
-      </div>
-      <div className={classes.copyright}>
-        <Typography variant="body2" align="right">
-          {`©️ ${new Date().getFullYear()} ${data.site.siteMetadata.author}.`}
-        </Typography>
-      </div>
-    </footer>
-  )
+  return <PureFooter {...props} data={data}></PureFooter>
 }
 
 Footer.propTypes = {
+  isLoggedIn: PropTypes.bool,
+}
+PureFooter.propTypes = {
+  data: PropTypes.objectOf(PropTypes.any),
   isLoggedIn: PropTypes.bool,
 }
 
