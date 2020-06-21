@@ -16,7 +16,7 @@ export default makeStyles((theme) => ({
       height: '18rem',
     },
     [`${theme.breakpoints.up('md')}`]: {
-      height: '19rem',
+      height: '23rem',
     },
     [`${theme.breakpoints.up('lg')}`]: {
       height: '29rem',

@@ -122,7 +122,6 @@ const Navbar = ({ siteTitle }) => {
                 title={`Toggle ${darkMode ? 'Light Mode' : 'Dark Mode'}`}
               >
                 <IconButton
-                  tabIndex={open ? '-1' : '0'}
                   color="primary"
                   onClick={() => setDarkMode(!darkMode)}
                   className={clsx(classes.icon, classes.darkModeIcon)}

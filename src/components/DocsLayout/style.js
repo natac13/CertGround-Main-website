@@ -45,6 +45,16 @@ export default makeStyles((theme) => ({
   article: {
     margin: theme.spacing(1, 3, 1, 3),
     maxWidth: '660px',
+    fontSize: theme.typography.body1.fontSize,
+    '& a': {
+      color: theme.palette.primary.main,
+      '&:hover, &:focus': {
+        color: theme.palette.primary.dark,
+      },
+      '&:visited': {
+        color: theme.palette.secondary.main,
+      },
+    },
   },
   editThisPageBtn: {
     alignSelf: 'center',

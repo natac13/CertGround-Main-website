@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
-// import DateFnsUtils from '@date-io/date-fns'
 import { ThemeProvider, createMuiTheme } from '@material-ui/core'
 import CssBaseline from '@material-ui/core/CssBaseline'
 
