@@ -1,16 +1,12 @@
-/**
- * SEO component that queries for data with
- *  Gatsby's useStaticQuery React hook
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
+import R from 'ramda'
 import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
+import startCase from 'lodash/startCase'
+import capitalize from 'lodash/capitalize'
 
-function SEO({ description, lang, meta, title }) {
+function SEO({ description, lang, meta, pathname }) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -27,21 +23,45 @@ function SEO({ description, lang, meta, title }) {
 
   const metaDescription = description || site.siteMetadata.description
 
+  const createCrumbs = R.compose(
+    R.map(R.compose(startCase, capitalize)),
+    R.reject(R.isEmpty),
+    R.split('/')
+  )
+
+  const createTitle = R.compose(
+    R.join(' | '),
+    R.append(`${site.siteMetadata.title}`),
+    // R.reject(
+    //   R.compose(
+    //     R.lte(12), // 12 is less than or equal to the length of the crump in the array
+    //     R.length
+    //   )
+    // ),
+    R.reverse,
+    createCrumbs
+  )
+  const title = createTitle(pathname || '')
   return (
     <Helmet
       htmlAttributes={{
         lang,
       }}
-      title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      title={site.siteMetadata.title}
+      // titleTemplate={`%s | ${site.siteMetadata.title}`}
+      titleTemplate={`${title}`}
       meta={[
+        {
+          name: 'viewport',
+          content: 'minimum-scale=1, initial-scale=1, width=device-width',
+        },
         {
           name: `description`,
           content: metaDescription,
         },
         {
           property: `og:title`,
-          content: title,
+          content: site.siteMetadata.title,
         },
         {
           property: `og:description`,
@@ -61,7 +81,7 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           name: `twitter:title`,
-          content: title,
+          content: site.siteMetadata.title,
         },
         {
           name: `twitter:description`,
@@ -76,13 +96,14 @@ SEO.defaultProps = {
   lang: `en`,
   meta: [],
   description: ``,
+  pathname: ``,
 }
 
 SEO.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired,
+  pathname: PropTypes.string,
 }
 
 export default SEO

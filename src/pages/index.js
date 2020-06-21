@@ -9,6 +9,7 @@ import SEO from '../components/seo'
 import HeroImage from '../components/HeroSection'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
+import Features from '../components/Features'
 
 const useStyles = makeStyles((theme) => ({
   hero: {
@@ -26,6 +27,10 @@ const useStyles = makeStyles((theme) => ({
   },
   wrapper: {
     marginBottom: theme.spacing(6),
+    width: '100%',
+    display: 'grid',
+    gridTemplateColumns: '1fr',
+    placeItems: 'center center',
   },
 }))
 
@@ -39,9 +44,12 @@ const IndexPage = (props) => {
         <section id="hero" className={classes.hero}>
           <HeroImage />
         </section>
+
+        <Features />
+
         <section className={classes.clientsWrapper}>
           <Typography variant="h3" align="center">
-            Clients
+            Serving the following Clients
           </Typography>
           <div className={classes.clients} id="clients">
             {props.data.clients.nodes.map((node) => (
