@@ -175,7 +175,7 @@ const Features = (props) => {
         icon: HammerScrewdriver,
       },
     ],
-    []
+    [classes.featureItemList, classes.featureItemListItem]
   )
 
   return (

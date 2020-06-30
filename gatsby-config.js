@@ -46,6 +46,7 @@ module.exports = {
     'Mdx.frontmatter.author': `Sean Paul Campbell`,
   },
   plugins: [
+    `gatsby-plugin-use-dark-mode`,
     {
       resolve: `gatsby-plugin-s3`,
       options: {
