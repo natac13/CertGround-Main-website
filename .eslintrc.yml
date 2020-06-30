@@ -3,15 +3,16 @@ env:
   es6: true
   jest: true
 extends:
-  - 'plugin:react/recommended'
-  - 'plugin:jsx-a11y/recommended'
+  - "plugin:react/recommended"
+  - "plugin:jsx-a11y/recommended"
   - standard
-  - 'plugin:prettier/recommended'
+  - "plugin:prettier/recommended"
+  # - "plugin:react-hooks/recommended"
 globals:
   Atomics: readonly
   SharedArrayBuffer: readonly
   cy: readonly
-parser: 'babel-eslint'
+parser: "babel-eslint"
 parserOptions:
   ecmaFeatures:
     jsx: true
@@ -19,13 +20,17 @@ parserOptions:
   sourceType: module
 plugins:
   - react
+  - react-hooks
+  - jsx-a11y
 rules:
   {
-    'jsx-a11y/aria-role': [2, { ignoreNonDOM: true }],
-    'space-before-function-paren': 0,
-    'no-console': 2,
-    'react/jsx-uses-react': 2,
+    "jsx-a11y/aria-role": [2, { ignoreNonDOM: true }],
+    "space-before-function-paren": 0,
+    "no-console": 2,
+    "react/jsx-uses-react": 2,
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
   }
 settings:
   react:
-    version: 'detect'
+    version: "detect"

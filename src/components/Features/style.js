@@ -67,11 +67,11 @@ export default makeStyles((theme) => ({
     textAlign: 'center',
   },
   featureItemList: {
-    listStyle: 'none',
-    display: 'grid',
-    padding: 0,
-    gap: theme.spacing(2) + 'px',
-    marginTop: theme.spacing(2),
+    listStyle: 'none !important',
+    display: 'grid !important',
+    padding: [0, '!important'],
+    gap: theme.spacing(2) + 'px !important',
+    marginTop: [theme.spacing(2), '!important'],
   },
   featureItemListItem: {},
 }))
